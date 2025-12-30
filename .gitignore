@@ -1,0 +1,28 @@
+# --- Python Internals ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+# (If you create a virtual environment later, this keeps it local)
+venv/
+env/
+.venv/
+
+# --- Environment Variables ---
+# (Never upload API keys or secrets!)
+.env
+
+# --- Operating System Junk ---
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+Thumbs.db
+ehthumbs.db
+
+# --- Editor / IDE Settings ---
+# (Your personal window layouts and settings)
+.idea/
+.vscode/
+*.swp
