@@ -15,7 +15,7 @@ df = pd.read_csv(url)
 x = df[['Length1','Length2','Length3','Height','Width']]
 y = df['Weight']
 
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,)
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
 
 print(f"Training Samples:{x_train.shape[0]}")
 print(f"Testing Samples:{x_test.shape[0]}")
