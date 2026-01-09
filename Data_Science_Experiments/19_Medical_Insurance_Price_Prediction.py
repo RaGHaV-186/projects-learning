@@ -64,8 +64,3 @@ best_alpha = grid.best_params_['ridge__alpha']
 print(f"Best Alpha Found: {best_alpha}")
 print(f"Training R²:      {best_model.score(x_train, y_train):.4f}")
 print(f"Testing R²:       {best_model.score(x_test, y_test):.4f}")
-
-
-
-
-
