@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.cluster import DBSCAN
-
+import hdbscan
 pd.set_option('display.max_columns',None)
 pd.set_option('display.width',1000)
 
@@ -26,9 +26,9 @@ df = df.dropna(subset=['Latitude', 'Longitude'])
 
 print(df.dtypes)
 
-coords_scales = df.copy()
+coords_scaled = df.copy()
 
-coords_scales['Latitude'] = 2 * coords_scales['Latitude']
+coords_scaled['Latitude'] = 2 * coords_scaled['Latitude']
 
 min_samples = 3
 
@@ -38,7 +38,15 @@ metric = 'euclidean'
 
 dfscan = DBSCAN(eps=eps,min_samples=min_samples,metric=metric)
 
-dfscan.fit(coords_scales)
+dfscan.fit(coords_scaled)
 df['cluster'] = dfscan.labels_
 
-print(df['cluster'])
+print(df['cluster'].value_counts())
+
+min_samples=None
+min_cluster_size=3
+hdb = hdbscan.HDBSCAN(min_samples=min_samples, min_cluster_size=min_cluster_size, metric='euclidean')
+
+df['Cluster'] = hdb.fit_predict(coords_scaled)
+
+print(df['Cluster'].value_counts())
