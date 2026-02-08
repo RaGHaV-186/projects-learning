@@ -5,6 +5,9 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras import backend as K
 from keras.layers import Layer
+from tensorflow.keras.layers import AdditiveAttention, Concatenate, Dense, Embedding, Input, LSTM
+from tensorflow.keras.models import Model
+
 import warnings
 warnings.simplefilter('ignore', FutureWarning)
 
@@ -78,9 +81,6 @@ class SelfAttention(Layer):
     def compute_output_shape(self, input_shape):
         return input_shape
 
-
-from tensorflow.keras.layers import AdditiveAttention, Concatenate, Dense, Embedding, Input, LSTM
-from tensorflow.keras.models import Model
 
 # Encoder
 encoder_inputs = Input(shape=(max_input_length,))
